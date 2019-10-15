@@ -157,6 +157,7 @@ void ff_flac_decorrelate_indep8_32_avx(uint8_t **out, int32_t **in, int channels
 #if !(ARCH_X86_64)
 void ff_flac_decorrelate_indep8_32_sse2(uint8_t **out, int32_t **in, int channels, int len, int shift) {return;}
 #endif
+//void ff_flac_enc_lpc_16_sse4(int32_t * param1, const int32_t * param2, int param3, int param4, const int32_t * param5,int param6) {return;}
 void ff_flacdsp_init_arm(FLACDSPContext *c, enum AVSampleFormat fmt, int channels, int bps) {return;}
 void ff_fmt_convert_init_aarch64(FmtConvertContext *c, AVCodecContext *avctx) {return;}
 void ff_fmt_convert_init_arm(FmtConvertContext *c, AVCodecContext *avctx) {return;}

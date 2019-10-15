@@ -1,7 +1,4 @@
-/*
- * Correctly setup required msvc compatibility options based on which native
- * Windows compiler is in use.
- * Copyright (c) 2015 Matthew Oliver
+/** libavformat DCE definitions
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,19 +19,14 @@
  * THE SOFTWARE.
  */
 
-#ifndef SMP_COMPAT_H
-#define SMP_COMPAT_H
+#include "config.h"
+#include "stdint.h"
 
-#ifdef _MSC_VER
-#   ifndef __cplusplus
-#       define inline __inline
-#   endif
-#   include <crtversion.h>
-#   if _VC_CRT_MAJOR_VERSION < 14
-#       include <../compat/msvcrt/snprintf.h>
-#       define strtod avpriv_strtod
-#       define strtoll _strtoi64
-#   endif
-#endif
+#include "libavformat/rtmpcrypt.h"
 
-#endif /* SMP_COMPAT_H */
+int ff_rtmpe_compute_secret_key(URLContext *h, const uint8_t *serverdata,
+                                const uint8_t *clientdata, int type) {return 0;}
+int ff_rtmpe_gen_pub_key(URLContext *h, uint8_t *buf) {return 0;}
+int ff_rtmpe_update_keystream(URLContext *h) {return 0;}
+void ff_rtmpe_encrypt_sig(URLContext *h, uint8_t *signature,
+                          const uint8_t *digest, int type) {return;}
